@@ -13,6 +13,7 @@
 				--details-color:var(--purple);
 				width: 50em;
 				margin-block: 1em;
+				background-color: var(--details-color);
 
 				&:nth-of-type(2) {
 					--details-color:var(--green);
@@ -57,7 +58,15 @@
 				}
 			}
 
-			/* dit is het stukje waar de tekst zit */
+
+			/* als ::details-content wordt gesupport dan wordt de achtegrond kleur van de details transparant */
+			@supports selector(::details-content) {
+				details {
+					background-color: transparent;		
+				}
+			}
+
+			/* en vervolgens voert hij dan dit uit - dit is ook het stukje waar de tekst zit */
 			details[open ]::details-content { 
 				padding:1em;
 				background-color: var(--details-color);
