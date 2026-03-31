@@ -8,17 +8,119 @@
 		<link href="assets/styles.css" rel="stylesheet">
 		<style>
 			/* Schrijf hier gewoon je CSS voor dit component */
-
 			/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
-
 			/* Hint: Hoe ver ga je qua styling? Vraag jezelf dit altijd af */
+
+			* {
+				accent-color: red;
+			}
+
+
+			label {
+				display: flex;
+				align-items:center;
+				gap: .5em;
+			}
+			
+
+			html {
+				color-scheme: light dark;
+			}
+			
+
+			input {
+			--width: 6.5em;
+			--height: 3em;
+			/* --padding:.2em; */
+			--padding: 0em;
+			--radius: 1.5em;
+			
+			--off-color:silver;
+			--on-color:limegreen;
+
+			--off-text:"";
+			--on-text:"aan";
+			
+			appearance: none; /* blokje verdwijnt */
+
+			width: var(--width);
+			height: var(--height);
+			padding: var(--padding);
+				
+			/* background-color:var(--off-color); */
+			background-image: linear-gradient(
+				to right,
+				var(--on-color) 50%,
+				var(--off-color) 50%
+			);
+
+			background-size: 200% 100%;
+			background-position: right;
+
+			border-radius: var(--radius);
+			
+			aspect-ratio: 2/1; /*  2 breed 1 hoog */
+				
+			background-color: var(--off-color);
+			border-radius: var(--radius);
+
+			@media (prefers-reduced-motion: no-preference) {
+				transition-duration: .6s;
+				transition-property:background-position;
+			}
+			
+			&:focus-visible {
+				outline:solid .2em canvastext;
+				outline-offset: .3em;;
+			}
+				
+			&:checked {
+				background-color: var(--on-color);
+				background-position: left;
+			}
+				
+			/* thumbs */
+			&::before {
+				content: var(--off-text);
+				
+				display:grid;
+				align-items:center;
+				justify-items:center;
+				
+				place-items: center;
+				
+				height:100%;
+				aspect-ratio: 1/1;
+				
+				background-color:white;
+				color: black;
+				
+				background-color: canvastext;
+				color: canvas;
+				border-radius: calc(var(--radius) - var(--padding));
+				
+				transition-duration: inherit;
+				transition-property:translate, rotate;
+			}
+
+			&:checked::before {
+				content: var(--on-text);
+				translate:calc(var(--width) - var(--height));
+				rotate: 1turn;
+			}
+		}
 		</style>
+
 	</head>
+
 	<body>
 		<h1>Switch control</h1>
-		
 		<!-- Hint: Safari heeft hiervoor iets bedacht, maar is dat al een standaard?
 		     Wat gebeurt er in browsers die dat nog niet ondersteunen? -->
+			 <label>
+ 				 <input type="checkbox" switch>
+			 </label>
+			
 
 		<details open>
 			<summary>Demo video</summary>
