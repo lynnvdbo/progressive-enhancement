@@ -29,6 +29,7 @@
 			
 
 			input {
+			@supports (appearance: none) {
 			--width: 6.5em;
 			--height: 3em;
 			/* --padding:.2em; */
@@ -107,6 +108,7 @@
 				content: var(--on-text);
 				translate:calc(var(--width) - var(--height));
 				rotate: 1turn;
+			}
 			}
 		}
 		</style>
